@@ -22,19 +22,20 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email, username, password):
         """
         Creates and saves a new superuser
         :param email: primary email
+        :param username: primary username
         :param password: password field
         :return: created superuser
         """
-        user = self.model(email=email, username=email)
+        user = self.model(email=email, username=username)
 
         user.set_password(password)
-        user.is_staff = True
         user.is_superuser = True
         user.is_active = True
         user.is_admin = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
