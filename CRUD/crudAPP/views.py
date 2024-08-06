@@ -35,8 +35,23 @@ def create_user(request):
 
 
 def update_user(request, pk):
-    pass
+    """
+    this function update user specific data from database
+    :param request: user request
+    :param pk: primary key of user to update
+    :return: json response with user data we update it
+    """
+    user = User.objects.get(id=pk)
+    """
+    we need this data for updating user
 
+    user.username = request.POST['username']
+    user.email = request.POST['email']
+    user.mobile = request.POST['mobile']
+    
+    user.save()
+    """
+    return JsonResponse({'username': user.username, 'email': user.email, 'mobile': user.mobile})
 
 def delete_user(request, pk):
     """
