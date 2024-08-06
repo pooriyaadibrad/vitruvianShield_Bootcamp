@@ -39,4 +39,12 @@ def update_user(request, pk):
 
 
 def delete_user(request, pk):
-    pass
+    """
+    this function delete user specific data from database
+    :param request: user request
+    :param pk: primary key of user to delete
+    :return: Json response with success message
+    """
+    user = User.objects.get(id=pk)
+    user.delete()
+    return JsonResponse({'message': 'user deleted successfully'})
