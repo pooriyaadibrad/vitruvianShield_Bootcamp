@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from .models import User
 
-# Create your views here.
+
+def index(request):
+    users = User.objects.all()
+    users=[
+        {
+            'username':obj.username,
+            'email':obj.email,
+            'mobile':obj.mobile
+        }for obj in users
+    ]
+    return JsonResponse(users, safe=False)
