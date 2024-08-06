@@ -28,3 +28,15 @@ def get_user(request, pk):
     """
     user = User.objects.get(id=pk)
     return JsonResponse({'username': user.username, 'email': user.email, 'mobile': user.mobile})
+
+
+def create_user(request):
+    pass
+
+
+def update_user(request, pk):
+    pass
+
+
+def delete_user(request, pk):
+    pass
