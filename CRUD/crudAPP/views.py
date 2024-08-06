@@ -31,7 +31,19 @@ def get_user(request, pk):
 
 
 def create_user(request):
-    pass
+    """
+    this function create new user
+    :param request: request user
+    :return: success return Json response with user data be created
+    """
+    """
+    we need this data for updating user
+    
+    user = User.objects.create_user(username=request.POST['username'], email=request.POST['email'],
+                                    mobile=request.POST['mobile'])
+    user.save()
+    """
+    return JsonResponse({'message': 'success create user'})
 
 
 def update_user(request, pk):
@@ -52,6 +64,7 @@ def update_user(request, pk):
     user.save()
     """
     return JsonResponse({'username': user.username, 'email': user.email, 'mobile': user.mobile})
+
 
 def delete_user(request, pk):
     """
